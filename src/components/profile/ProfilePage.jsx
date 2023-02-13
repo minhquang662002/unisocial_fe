@@ -82,7 +82,11 @@ const ProfilePage = () => {
               {!isFetching ? (
                 <ProfileButton user={user} auth={auth} />
               ) : (
-                <div className="flex gap-2">
+                <div
+                  className="flex gap-4 justify-center md:justify-end items-end 
+                  [&>div]:flex [&>div]:gap-2 [&>div]:items-center 
+                  [&>div]:transition-colors [&>div]:rounded-lg [&>div]:px-4 [&>div]:py-2"
+                >
                   <div className="w-12 h-6 animate-pulse bg-slate-300" />
                   <div className="w-12 h-6 animate-pulse bg-slate-300" />
                 </div>
