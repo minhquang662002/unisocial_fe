@@ -1,8 +1,9 @@
 import { BsMessenger } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
-import { FC, useContext } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { memo } from "react";
+import FriendButton from "./FriendButton";
 
 const ProfileButton = ({ user, auth }) => {
   const { setShowModal } = useContext(GlobalContext);
