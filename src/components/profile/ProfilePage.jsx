@@ -34,12 +34,20 @@ const ProfilePage = () => {
       <div className="flex flex-col gap-6 flex-grow items-center dark:text-white">
         <div className="w-full shadow bg-white dark:bg-slate-900">
           <div className="w-full md:max-w-[1050px] mx-auto">
-            <div
-              className={`w-full h-56 md:h-96 bg-cover bg-center rounded-b-lg ${
-                isFetching ? "bg-gray-500 animate-pulse" : ""
-              }`}
-              style={{ backgroundImage: `url(${user?.background})` }}
-            />
+            {isFetching ? (
+              <div
+                className={`w-full h-56 md:h-96 rounded-b-lg ${
+                  isFetching ? "bg-gray-500 animate-pulse" : ""
+                }`}
+              />
+            ) : (
+              <div
+                className={`w-full h-56 md:h-96 bg-cover bg-center rounded-b-lg ${
+                  isFetching ? "bg-gray-500 animate-pulse" : ""
+                }`}
+                style={{ backgroundImage: `url(${user?.background})` }}
+              />
+            )}
             <div className="flex flex-col md:flex-row justify-between -mt-16 md:-mt-8 mx-4 ">
               <div className="flex flex-col md:flex-row gap-2">
                 <div className="flex justify-center items-center md:border-4 md:border-white rounded-full">
@@ -71,7 +79,14 @@ const ProfilePage = () => {
                 </div>
               </div>
 
-              <ProfileButton user={user} auth={auth} />
+              {!isFetching ? (
+                <ProfileButton user={user} auth={auth} />
+              ) : (
+                <div className="flex gap-2">
+                  <div className="w-12 h-6 animate-pulse bg-slate-300" />
+                  <div className="w-12 h-6 animate-pulse bg-slate-300" />
+                </div>
+              )}
             </div>
             <div className="flex gap-2 text-sm border-t border-gray-300 mt-8 p-2">
               <Link
